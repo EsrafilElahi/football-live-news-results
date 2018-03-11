@@ -5,8 +5,6 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import ThemeProvider from '../components/context api/ThemeProvider'
 
-
-// loading progress
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
