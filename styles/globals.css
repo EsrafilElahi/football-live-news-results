@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
+/* font-family: 'Baloo Tammudu 2', cursive; */
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 2;
+  font-family: "Baloo Tammudu 2", cursive;
+  background-color: rgb(255, 255, 200);
 }
 
 a {
@@ -13,4 +17,81 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.content {
+  height: 83vh;
+}
+
+.sidebar {
+  height: 83vh;
+}
+
+.tournament {
+  cursor: pointer;
+}
+
+.content-sec {
+  height: 29rem;
+  overflow-y: auto;
+}
+
+.card {
+  width: 13rem;
+}
+
+.dark-mode {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+.switch-dark-mode {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.header-sec {
+  display: flex;
+  align-items: center;
+}
+
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 48px;
+}
+
+.footer-p {
+  padding-top: 14px;
+}
+
+.react-toggle-track-check {
+  left: 4px !important;
+}
+
+.react-toggle-track-x {
+  top: -2px !important;
+  right: 12px !important;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #d4d4d4 !important;
+}
+
+.react-toggle--checked .react-toggle-thumb {
+  left: 27px;
+  border-color: white !important;
+}
+
+.react-toggle--focus .react-toggle-thumb {
+  box-shadow: 0px 0px 0px 0px #fff !important;
+}
+
+.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+  box-shadow: 0px 0px 0px 0px #fff !important;
 }
