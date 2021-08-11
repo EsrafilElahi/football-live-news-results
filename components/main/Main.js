@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import moment from 'moment'
 import { css } from "@emotion/react";
@@ -10,15 +11,19 @@ import Pagination from '../other/Pagination';
 import Card from '../other/Card';
 
 
-const override = css`
+const loadingStyle = css`
   margin: 0 auto;
   margin-top: 10rem;
 `;
 
-const Home = () => {
+export default function Main({ data }) {
 
     const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(false)
+    const loading = useSelector(state => state.loading)
+    const dispatch = useDispatch()
+
+
+    // initial state for pagination
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage] = useState(6)
 
@@ -43,18 +48,22 @@ const Home = () => {
     let tomorrow = moment(moment(today).add(1, 'd').format('YYYY-MM-DD'))._i
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true)
-            const res = await axios.get(`https://api.football-data.org/v2/matches?competitions=PL,PD,SA,BL1,FL1,CL&dateFrom=${today}&dateTo=${tomorrow}`, {
-                headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-            })
-            setPosts(res.data.matches)
-            setLoading(false)
-        }
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         dispatch(setLoading(true))
+    //         const res = await axios.get(`https://api.football-data.org/v2/matches?competitions=PL,PD,SA,BL1,FL1,CL&dateFrom=${today}&dateTo=${tomorrow}`, {
+    //             headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
+    //         })
+    //         setPosts(res.data.matches)
+    //         dispatch(setLoading(false))
+    //     }
 
-        fetchData()
-    }, [])
+
+    //     fetchData()
+
+    // }, [])
+
+    // console.log('data :', data)
 
 
     return (
@@ -65,9 +74,9 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='row gy-3 content-sec'>   {/* Content */}
+            <div className='row gy-3 content-sec'>   {/* Content-Cards ↓↓ */}
 
-                <CircleLoader color={'#1e77ff'} loading={loading} css={override} size={100} />                {paginatedPosts.map((post, index) => {
+                <CircleLoader color={'#1e77ff'} loading={loading} css={loadingStyle} size={100} />                {paginatedPosts.map((post, index) => {
                     return (
                         <div key={index} className='col-xs-12 col-md-6 col-lg-4'>
                             <Card title={post.id} />
@@ -85,5 +94,18 @@ const Home = () => {
     )
 }
 
-export default Home
-
+export const getServerSideProps = async () => {
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h")
+  
+    const data = await res.json()
+  
+    if (!data) {
+      return {
+        notFound: true
+      }
+    }
+  
+    return {
+      props: { data }
+    }
+  }

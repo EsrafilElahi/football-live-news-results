@@ -1,18 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import moment from 'moment'
 import Toggle from 'react-toggle'
-import "react-toggle/style.css"
 
 import Sidebar from './../other/Sidebar'
-import { setDarkMode } from './../../redux/action/darkModeAction';
+import Title from '../other/Title'
+import "react-toggle/style.css"
 
 
 function Layout({ children }) {
 
-    const darkMode = useSelector((state) => state.darkMode)
-    const dispatch = useDispatch()
+    const [darkMode, setDarkMode] = useState(false)
 
     return (
         <div style={{ color: darkMode ? '#22' : null }}>
@@ -30,7 +28,7 @@ function Layout({ children }) {
                     <div className="col-4 text-center switch-dark-mode">
                         <span style={{ color: darkMode ? 'gray' : 'yellow', paddingRight: '3px' }}>✩</span>
                         <Toggle
-                            onChange={() => dispatch(setDarkMode())}
+                            onChange={() => setDarkMode(!darkMode)}
                             icons={{
                                 checked: <span></span>,
                                 unchecked: <span></span>,
@@ -48,6 +46,9 @@ function Layout({ children }) {
 
                     {/* Content */}
                     <div className="col-9 content">
+                        <div className='col-12 title pt-2'>   {/* Title */}
+                            <Title title='feelani' />
+                        </div>
                         {children}
                     </div>
 
@@ -61,7 +62,7 @@ function Layout({ children }) {
                 {/* Footer */}
                 <div className="row footer">
                     <div className="col-12 footer-p bg-secondary">
-                        Footer Copyright 2021
+                        Copyright 2021 &copy;Esrafil Elahi
                     </div>
                 </div>
 
