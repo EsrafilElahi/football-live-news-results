@@ -11,7 +11,7 @@ function MrGoal({ dataPL, dataPD, dataSA, dataBL1, dataFL1, dataCL }) {
     console.log('data scorers CL :', dataCL)
 
     return (
-        <Layout>
+        <Layout alertTitle='Mr Goal'>
             MrGoal
         </Layout>
     )

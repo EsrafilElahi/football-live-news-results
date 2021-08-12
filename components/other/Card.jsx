@@ -1,12 +1,14 @@
 
-function Card({title}) {
+function Card({ title, src }) {
+    let cuttedTitle = title.split(' ').slice(0, 5).join(' ')
+
     return (
         <div>
-            <div className="card mx-auto position-relative">
-                <img src="https://via.placeholder.com/150" className="card-img-top" alt="image" />
+            <div style={{ height: '279px' }} className="card mx-auto position-relative">
+                <img src={src} className="card-img-top" height={130} alt={title} />
                 <div className="card-body">
-                    <p className="card-text">{title}</p>
-                    <a href="#" className="btn btn-primary">continue</a>
+                    <p className="card-text">{cuttedTitle}</p>
+                    <a href="#" className="btn btn-primary card-custom-body">continue</a>
                 </div>
             </div>
         </div>
@@ -14,3 +16,4 @@ function Card({title}) {
 }
 
 export default Card
+

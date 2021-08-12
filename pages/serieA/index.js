@@ -1,13 +1,42 @@
 import axios from 'axios'
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layout/Layout'
+import { MatchCard } from './../../components/other/MatchCard'
+import Pagination from './../../components/other/Pagination'
+import usePaginationTools from './../../components/pagination tools/usePaginationTools'
 
 
 function SerieA({ data }) {
+
+    const posts = data.matches
+    const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
     console.log('data SerieA :', data)
 
     return (
-        <Layout>
-            SerieA
+        <Layout alertTitle='Serie A'>
+            <div className='row gy-3 content-sec'>
+
+                {
+                    posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
+                        paginatedPosts.map((post, index) => {
+                            const Hteam = post.homeTeam.name
+                            const Ateam = post.awayTeam.name
+                            const Hscore = post.score.fullTime.homeTeam
+                            const Ascore = post.score.fullTime.awayTeam
+
+                            return (
+                                <div key={index} className='col-xs-12 col-lg-6'>
+                                    <MatchCard Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                </div>
+                            )
+                        })
+                }
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={posts.length}
+                    paginate={paginate}
+                />
+
+            </div>
         </Layout>
     )
 }

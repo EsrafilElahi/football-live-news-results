@@ -4,7 +4,7 @@ function Title({ title }) {
     return (
         <div>
             <div className="alert alert-primary" role="alert">
-                {title}
+                <span>{title}</span>
             </div>
         </div>
     )

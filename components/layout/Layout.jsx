@@ -8,7 +8,7 @@ import Title from '../other/Title'
 import "react-toggle/style.css"
 
 
-function Layout({ children }) {
+function Layout({ children, alertTitle }) {
 
     const [darkMode, setDarkMode] = useState(false)
 
@@ -45,15 +45,15 @@ function Layout({ children }) {
                 <div className="row">
 
                     {/* Content */}
-                    <div className="col-9 content">
-                        <div className='col-12 title pt-2'>   {/* Title */}
-                            <Title title='feelani' />
+                    <div className="col-8 col-md-9 content">
+                        <div className='col-12 pt-2'>   {/* Title */}
+                            <Title title={alertTitle} />
                         </div>
                         {children}
                     </div>
 
                     {/* Sidebar */}
-                    <div className="col-3 bg-success">
+                    <div className="col-4 col-md-3 bg-success">
                         <Sidebar />
                     </div>
 

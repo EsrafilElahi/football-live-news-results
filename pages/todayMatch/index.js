@@ -1,14 +1,41 @@
 import axios from 'axios'
 import moment from 'moment'
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layout/Layout'
+import { TodayMatchCard } from './../../components/other/MatchCard'
+import Pagination from './../../components/other/Pagination'
+import usePaginationTools from './../../components/pagination tools/usePaginationTools'
 
 
 function TodayMatch({ data }) {
+
+    const posts = data.matches
+    const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
     console.log('data TodayMatch :', data)
 
     return (
-        <Layout>
-            TodayMatch
+        <Layout alertTitle='Today Matches'>
+            <div className='row gy-3 content-sec'>
+
+                {
+                    posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
+                        paginatedPosts.map((post, index) => {
+                            const Hteam = post.homeTeam.name
+                            const Ateam = post.awayTeam.name
+
+                            return (
+                                <div key={index} className='col-xs-12 col-lg-6'>
+                                    <TodayMatchCard Hteam={Hteam} Ateam={Ateam} />
+                                </div>
+                            )
+                        })
+                }
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={posts.length}
+                    paginate={paginate}
+                />
+
+            </div>
         </Layout>
     )
 }

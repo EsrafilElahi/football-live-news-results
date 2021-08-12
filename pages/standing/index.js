@@ -10,7 +10,7 @@ function Standing({ dataPL, dataPD, dataSA, dataBL1, dataFL1 }) {
     console.log('data Standing FL1 :', dataFL1)
 
     return (
-        <Layout>
+        <Layout alertTitle='Standing'>
             Standing
         </Layout>
     )

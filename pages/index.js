@@ -1,49 +1,39 @@
-import { useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 
 import Layout from './../components/layout/Layout';
 import Pagination from './../components/other/Pagination';
 import Card from './../components/other/Card';
+import usePaginationTools from './../components/pagination tools/usePaginationTools'
 
 
 export default function Main({ data }) {
 
-  const [posts, setPosts] = useState([])
+  const posts = data.articles
+  const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
+  console.log('data news :', posts)
 
-  // initial state for pagination
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage] = useState(6)
-
-  // get current posts
-  const indexOfLastPosts = currentPage * postsPerPage
-  const indexOfFirstPosts = indexOfLastPosts - postsPerPage
-  const paginatedPosts = posts.slice(indexOfFirstPosts, indexOfLastPosts)
-
-  // change page
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
-
-  console.log('data news :', data)
 
   return (
-    <Layout>
 
+    <Layout alertTitle='News'>
       <div className='row gy-3 content-sec'>   {/* Content-Cards ↓↓ */}
 
-        {paginatedPosts.map((post, index) => {
-          return (
-            <div key={index} className='col-xs-12 col-md-6 col-lg-4'>
-              <Card title={post.folanChiz} />
-            </div>
-          )
-        })}
-
+        {
+          posts.length === 0 ? <div className='mt-4 text-danger'>There Is No News 🤔</div> :
+            paginatedPosts.map((post, index) => {
+              return (
+                <div key={index} className='col-xs-12 col-md-6 col-lg-4'>
+                  <Card title={post.title} src={post.urlToImage} />
+                </div>
+              )
+            })
+        }
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={posts.length}
-          paginate={paginate} />
+          paginate={paginate}
+        />
 
       </div>
     </Layout>

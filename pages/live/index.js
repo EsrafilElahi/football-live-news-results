@@ -6,7 +6,7 @@ function Live({ data }) {
     console.log('data Live :', data)
 
     return (
-        <Layout>
+        <Layout alertTitle='Live'>
             Live
         </Layout>
     )
