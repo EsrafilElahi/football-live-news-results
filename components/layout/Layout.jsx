@@ -15,7 +15,7 @@ function Layout({ children, alertTitle }) {
     return (
         <div style={{ color: darkMode ? '#22' : null }}>
             <Head>
-                <title>Next | Football News</title>
+                <title>Next Football</title>
             </Head>
 
             <div className="container text-center h-100">

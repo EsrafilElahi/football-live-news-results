@@ -17,19 +17,20 @@ function Laliga({ data }) {
 
                 {
                     posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
-                        paginatedPosts.map((post, index) => {
+                        paginatedPosts.map((post) => {
                             const Hteam = post.homeTeam.name
                             const Ateam = post.awayTeam.name
                             const Hscore = post.score.fullTime.homeTeam
                             const Ascore = post.score.fullTime.awayTeam
 
                             return (
-                                <div key={index} className='col-xs-12 col-lg-6'>
+                                <div key={post.id} className='col-xs-12 col-lg-6'>
                                     <MatchCard Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
                                 </div>
                             )
                         })
                 }
+
                 <Pagination
                     postsPerPage={postsPerPage}
                     totalPosts={posts.length}

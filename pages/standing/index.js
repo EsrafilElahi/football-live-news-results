@@ -1,53 +1,22 @@
-import axios from 'axios'
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layout/Layout'
+import StandingCard from './../../components/other/StandingCard'
 
 
-function Standing({ dataPL, dataPD, dataSA, dataBL1, dataFL1 }) {
-    console.log('data Standing PL :', dataPL)
-    console.log('data Standing PD :', dataPD)
-    console.log('data Standing SA :', dataSA)
-    console.log('data Standing BL1 :', dataBL1)
-    console.log('data Standing FL1 :', dataFL1)
+function Standing() {
 
     return (
-        <Layout alertTitle='Standing'>
-            Standing
+        <Layout alertTitle='Which Standing ?'>
+            <div className='row gx-1 gy-3 content-sec'>
+
+                <StandingCard country='england' league='Premier-League' src='/images/premier-league.png' />
+                <StandingCard country='spain' league='Laliga' src='/images/laliga.jpg' />
+                <StandingCard country='italy' league='Serie-A' src='/images/seriea.png' />
+                <StandingCard country='germany' league='Bundesliga' src='/images/bundesliga.jpg' />
+                <StandingCard country='france' league='Ligue-1' src='/images/ligue1.jpg' />
+
+            </div>
         </Layout>
     )
-}
-
-
-export const getServerSideProps = async () => {
-    const standingResPL = await axios.get(`https://api.football-data.org/v2/competitions/PL/standings`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const standingResPD = await axios.get(`https://api.football-data.org/v2/competitions/PD/standings`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const standingResSA = await axios.get(`https://api.football-data.org/v2/competitions/SA/standings`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const standingResBL1 = await axios.get(`https://api.football-data.org/v2/competitions/BL1/standings`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const standingResFL1 = await axios.get(`https://api.football-data.org/v2/competitions/FL1/standings`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-
-    const dataPL = standingResPL.data
-    const dataPD = standingResPD.data
-    const dataSA = standingResSA.data
-    const dataBL1 = standingResBL1.data
-    const dataFL1 = standingResFL1.data
-
-    if (!dataPL, !dataPD, !dataSA, !dataBL1, !dataFL1) {
-        return {
-            notFound: true
-        }
-    }
-    return {
-        props: { dataPL, dataPD, dataSA, dataBL1, dataFL1 }
-    }
 }
 
 export default Standing

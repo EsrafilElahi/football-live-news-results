@@ -70,6 +70,10 @@ a {
   padding-top: 14px;
 }
 
+table {
+  width: 99%;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
@@ -87,7 +91,7 @@ a {
   border-radius: 3px;
 }
 
-.match-card p{
+.match-card p {
   margin: 0 auto;
   padding-top: 10px;
 }

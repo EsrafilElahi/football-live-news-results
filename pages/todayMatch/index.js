@@ -14,26 +14,31 @@ function TodayMatch({ data }) {
 
     return (
         <Layout alertTitle='Today Matches'>
-            <div className='row gy-3 content-sec'>
+            <div className={paginatedPosts.length > 12 ? 'row gy-3 content-sec' : 'row gy-3'}>
 
                 {
                     posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
-                        paginatedPosts.map((post, index) => {
+                        paginatedPosts.map((post) => {
                             const Hteam = post.homeTeam.name
                             const Ateam = post.awayTeam.name
+                            const LeagueName = post.competition.name
 
                             return (
-                                <div key={index} className='col-xs-12 col-lg-6'>
-                                    <TodayMatchCard Hteam={Hteam} Ateam={Ateam} />
+                                <div key={post.id} className='col-xs-12 col-lg-6'>
+                                    <TodayMatchCard LeagueName={LeagueName} Hteam={Hteam} Ateam={Ateam} />
                                 </div>
                             )
                         })
                 }
-                <Pagination
-                    postsPerPage={postsPerPage}
-                    totalPosts={posts.length}
-                    paginate={paginate}
-                />
+
+                {
+                    paginatedPosts.length > 12 ?
+                        <Pagination
+                            postsPerPage={postsPerPage}
+                            totalPosts={posts.length}
+                            paginate={paginate}
+                        /> : null
+                }
 
             </div>
         </Layout>

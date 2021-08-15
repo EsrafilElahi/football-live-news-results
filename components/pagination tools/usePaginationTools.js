@@ -5,7 +5,7 @@ const usePaginationTools = (posts) => {
 
     // initial state for pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage] = useState(8)
+    const [postsPerPage] = useState(12)
 
     // get current posts
     const indexOfLastPosts = currentPage * postsPerPage
