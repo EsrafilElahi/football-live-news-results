@@ -4,15 +4,15 @@ import Pagination from './../../../components/other/Pagination';
 import usePaginationTools from './../../../components/pagination tools/usePaginationTools';
 
 
-function PremierLeague({ dataPL }) {
+function UCL({ dataCL }) {
 
-    const posts = dataPL.standings[0].table
+    const posts = dataCL.standings[0].table
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data pl :', posts)
+    console.log('data ucl :', posts)
 
     return (
 
-        <Layout alertTitle='Premier League Standing'>
+        <Layout alertTitle='UCL Standing'>
             <div className='row gy-3 content-sec'>
 
                 {posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Standing 🤔</div> :
@@ -32,7 +32,7 @@ function PremierLeague({ dataPL }) {
                             {
                                 paginatedPosts.map((post, index) => {
                                     let name = post.team.name
-                                    let cuttedName = name.split(' ').slice(0, 2).join(' ')
+                                    let cuttedName = name.split(' ').slice(0, 3).join(' ')
                                     return (
                                         <tr key={index}>
                                             <th scope="row">{post.position}</th>
@@ -63,21 +63,21 @@ function PremierLeague({ dataPL }) {
 
 
 export const getServerSideProps = async () => {
-    const standingResPL = await axios.get(`https://api.football-data.org/v2/competitions/PL/standings`, {
+    const standingResCL = await axios.get(`https://api.football-data.org/v2/competitions/CL/standings`, {
         headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
     })
 
-    const dataPL = standingResPL.data
+    const dataCL = standingResCL.data
 
-    if (!dataPL) {
+    if (!dataCL) {
         return {
             notFound: true
         }
     }
     return {
-        props: { dataPL }
+        props: { dataCL }
     }
 }
 
 
-export default PremierLeague
+export default UCL

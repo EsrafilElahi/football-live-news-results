@@ -13,6 +13,7 @@ function Standing() {
                 <StandingCard country='italy' league='Serie-A' src='/images/seriea.png' />
                 <StandingCard country='germany' league='Bundesliga' src='/images/bundesliga.jpg' />
                 <StandingCard country='france' league='Ligue-1' src='/images/ligue1.jpg' />
+                <StandingCard country='UEFA Champions League' league='UCL' src='/images/ucl.jpg' />
 
             </div>
         </Layout>

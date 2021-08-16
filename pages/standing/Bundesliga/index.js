@@ -33,6 +33,7 @@ function Bundesliga({ dataBL1 }) {
                                 paginatedPosts.map((post, index) => {
                                     let name = post.team.name
                                     let cuttedName = name.split(' ').slice(0, 3).join(' ')
+
                                     return (
                                         <tr key={index}>
                                             <th scope="row">{post.position}</th>

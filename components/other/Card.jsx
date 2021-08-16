@@ -6,7 +6,7 @@ function Card({ title, src }) {
     return (
         <div>
             <div style={{ height: '279px' }} className="card mx-auto position-relative">
-                <img src={src} className="card-img-top" height={130} alt={title} />
+                <img loading='lazy' src={src} className="card-img-top" height={130} alt={title} />
                 <div className="card-body">
                     <p className="card-text">{cuttedTitle}</p>
                     <Link href="#"><a className="btn btn-primary card-custom-body">continue</a></Link>

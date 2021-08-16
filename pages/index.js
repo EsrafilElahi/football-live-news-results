@@ -1,9 +1,8 @@
 import axios from 'axios'
 import moment from 'moment'
-
-import Layout from './../components/layout/Layout';
-import Pagination from './../components/other/Pagination';
-import Card from './../components/other/Card';
+import Layout from './../components/layout/Layout'
+import Pagination from './../components/other/Pagination'
+import Card from './../components/other/Card'
 import usePaginationTools from './../components/pagination tools/usePaginationTools'
 
 

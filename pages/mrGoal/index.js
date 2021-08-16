@@ -1,58 +1,23 @@
-import axios from 'axios'
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layout/Layout'
+import MrGoalCard from './../../components/other/MrGoalCard';
 
 
-function MrGoal({ dataPL, dataPD, dataSA, dataBL1, dataFL1, dataCL }) {
-    console.log('data scorers PL :', dataPL)
-    console.log('data scorers PD :', dataPD)
-    console.log('data scorers SA :', dataSA)
-    console.log('data scorers BL1 :', dataBL1)
-    console.log('data scorers FL1 :', dataFL1)
-    console.log('data scorers CL :', dataCL)
+function MrGoal() {
 
     return (
-        <Layout alertTitle='Mr Goal'>
-            MrGoal
+        <Layout alertTitle='Which League ?'>
+            <div className='row gx-1 gy-3 content-sec'>
+
+                <MrGoalCard country='england' league='Premier-League' src='/images/premier-league.png' />
+                <MrGoalCard country='spain' league='Laliga' src='/images/laliga.jpg' />
+                <MrGoalCard country='italy' league='Serie-A' src='/images/seriea.png' />
+                <MrGoalCard country='germany' league='Bundesliga' src='/images/bundesliga.jpg' />
+                <MrGoalCard country='france' league='Ligue-1' src='/images/ligue1.jpg' />
+                <MrGoalCard country='UEFA Champions League' league='UCL' src='/images/ucl.jpg' />
+
+            </div>
         </Layout>
     )
-}
-
-
-export const getServerSideProps = async () => {
-    const scorersResPL = await axios.get(`https://api.football-data.org/v2/competitions/PL/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const scorersResPD = await axios.get(`https://api.football-data.org/v2/competitions/PD/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const scorersResSA = await axios.get(`https://api.football-data.org/v2/competitions/SA/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const scorersResBL1 = await axios.get(`https://api.football-data.org/v2/competitions/BL1/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const scorersResFL1 = await axios.get(`https://api.football-data.org/v2/competitions/FL1/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-    const scorersResCL = await axios.get(`https://api.football-data.org/v2/competitions/CL/scorers`, {
-        headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
-    })
-
-    const dataPL = scorersResPL.data
-    const dataPD = scorersResPD.data
-    const dataSA = scorersResSA.data
-    const dataBL1 = scorersResBL1.data
-    const dataFL1 = scorersResFL1.data
-    const dataCL = scorersResCL.data
-
-    if (!dataPL, !dataPD, !dataSA, !dataBL1, !dataFL1, !dataCL) {
-        return {
-            notFound: true
-        }
-    }
-    return {
-        props: { dataPL, dataPD, dataSA, dataBL1, dataFL1, dataCL }
-    }
 }
 
 export default MrGoal
