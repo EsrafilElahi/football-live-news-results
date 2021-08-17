@@ -96,6 +96,15 @@ table {
   padding-top: 10px;
 }
 
+.link-detail {
+  cursor: pointer;
+  transition: box-shadow .5s ease;
+}
+
+.link-detail:hover {
+  box-shadow: 2px 3px 6px rgba(33, 183, 151, 0.6);
+}
+
 .react-toggle-track-check {
   left: 4px !important;
 }

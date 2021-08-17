@@ -14,7 +14,7 @@ function TodayMatch({ data }) {
 
     return (
         <Layout alertTitle='Today Matches'>
-            <div className={paginatedPosts.length > 12 ? 'row gy-3 content-sec' : 'row gy-3'}>
+            <div className='row gy-3 content-sec'>
 
                 {
                     posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :

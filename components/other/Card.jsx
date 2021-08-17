@@ -9,7 +9,7 @@ function Card({ title, src }) {
                 <img loading='lazy' src={src} className="card-img-top" height={130} alt={title} />
                 <div className="card-body">
                     <p className="card-text">{cuttedTitle}</p>
-                    <Link href="#"><a className="btn btn-primary card-custom-body">continue</a></Link>
+                    <Link href={`/${title}`}><a className="btn btn-primary card-custom-body">continue</a></Link>
                 </div>
             </div>
         </div>

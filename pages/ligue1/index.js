@@ -1,3 +1,4 @@
+import react, { useEffect } from 'react'
 import axios from 'axios'
 import Layout from '../../components/layout/Layout'
 import { MatchCard } from './../../components/other/MatchCard'
@@ -17,7 +18,7 @@ function Ligue1({ data }) {
 
                 {
                     posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
-                        paginatedPosts.map((post) => {
+                        paginatedPosts.slice(0).reverse().map((post) => {
                             const Hteam = post.homeTeam.name
                             const Ateam = post.awayTeam.name
                             const Hscore = post.score.fullTime.homeTeam
@@ -25,7 +26,7 @@ function Ligue1({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard id={post.id} League={'ligue1'} Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
                                 </div>
                             )
                         })
@@ -44,7 +45,7 @@ function Ligue1({ data }) {
 
 
 export const getServerSideProps = async () => {
-    const res = await axios.get(`https://api.football-data.org/v2/competitions/FL1/matches?status=FINISHED`, {
+    const res = await axios.get(`https://api.football-data.org/v2/competitions/FL1/matches?status=FINISHED&matchday`, {
         headers: { 'X-Auth-Token': '24574cf932a34d28b394c721600f5471' }
     })
     const data = res.data

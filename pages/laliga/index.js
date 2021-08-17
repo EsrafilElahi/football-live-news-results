@@ -17,7 +17,7 @@ function Laliga({ data }) {
 
                 {
                     posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
-                        paginatedPosts.map((post) => {
+                        paginatedPosts.slice(0).reverse().map((post) => {
                             const Hteam = post.homeTeam.name
                             const Ateam = post.awayTeam.name
                             const Hscore = post.score.fullTime.homeTeam
@@ -25,7 +25,7 @@ function Laliga({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard id={post.id} League={'laliga'} Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
                                 </div>
                             )
                         })
