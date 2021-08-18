@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import Layout from './../../../components/layout/Layout'
+import { ThemeContext } from './../../../components/context api/ThemeContext'
 
 
 function PremierLeague({ dataPL }) {
 
+    const { darkMode } = useContext(ThemeContext)
     const posts = dataPL.scorers
-    console.log('data pd :', dataPL)
 
     return (
 
@@ -13,7 +15,7 @@ function PremierLeague({ dataPL }) {
             <div className='row gy-3 content-sec'>
 
                 {posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Scorers 🤔</div> :
-                    <table className="table table-hover table-striped">
+                    <table className={darkMode ? "standing-darki table table-hover" : "standing-lighti table table-hover"}>
                         <thead>
                             <tr>
                                 <th scope="col">position</th>

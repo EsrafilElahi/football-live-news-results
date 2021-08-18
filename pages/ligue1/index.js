@@ -1,4 +1,3 @@
-import react, { useEffect } from 'react'
 import axios from 'axios'
 import Layout from '../../components/layout/Layout'
 import { MatchCard } from './../../components/other/MatchCard'
@@ -10,7 +9,6 @@ function Ligue1({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data Ligue1 :', data)
 
     return (
         <Layout alertTitle='Ligue 1'>
@@ -26,7 +24,14 @@ function Ligue1({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard id={post.id} League={'ligue1'} Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard 
+                                        id={post.id} 
+                                        League={'ligue1'} 
+                                        Hteam={Hteam} 
+                                        Hscore={Hscore} 
+                                        Ateam={Ateam} 
+                                        Ascore={Ascore} 
+                                    />
                                 </div>
                             )
                         })

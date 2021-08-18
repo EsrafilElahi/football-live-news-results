@@ -1,11 +1,11 @@
 import Layout from '../../components/layout/Layout'
-import MrGoalCard from './../../components/other/MrGoalCard';
+import MrGoalCard from './../../components/other/MrGoalCard'
 
 
 function MrGoal() {
 
     return (
-        <Layout alertTitle='Which League ?'>
+        <Layout alertTitle='Which League Scorers ?'>
             <div className='row gx-1 gy-3 content-sec'>
 
                 <MrGoalCard country='england' league='Premier-League' src='/images/premier-league.png' />

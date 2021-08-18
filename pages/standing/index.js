@@ -5,7 +5,7 @@ import StandingCard from './../../components/other/StandingCard'
 function Standing() {
 
     return (
-        <Layout alertTitle='Which Standing ?'>
+        <Layout alertTitle='Which League Standing ?'>
             <div className='row gx-1 gy-3 content-sec'>
 
                 <StandingCard country='england' league='Premier-League' src='/images/premier-league.png' />

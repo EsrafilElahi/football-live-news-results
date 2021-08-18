@@ -1,14 +1,18 @@
+import { useContext } from 'react';
+import { ThemeContext } from './../context api/ThemeContext';
 
 
 function MatchDetailCard({ Status, Winner, MatchDay, Country, Hteam, Hscore, Ateam, Ascore }) {
-    const filteredWinner = Winner == 'HOME_TEAM' ? Hteam : [ Winner == 'AWAY_TEAM' ? Ateam : 'draw' ]
 
-    return  (
+    const { darkMode } = useContext(ThemeContext)
+    const filteredWinner = Winner == 'HOME_TEAM' ? Hteam : [Winner == 'AWAY_TEAM' ? Ateam : 'draw']
+
+    return (
         <div>
-            <div className='link-detail match-card mx-auto position-relative'>
+            <div className={darkMode ? 'bg-darki color-lighti link-detail match-card mx-auto position-relative' : 'link-detail match-card mx-auto position-relative'}>
                 <p className='mx-2'>{Hteam}</p>
                 <p className='text-success font-weight-bold'>{Hscore}</p>
-                <p className='mx-1 text-danger'>:</p>
+                <p className='mx-1 text-gray'>:</p>
                 <p className='text-success font-weight-bold'>{Ascore}</p>
                 <p className='mx-2'>{Ateam}</p>
             </div>

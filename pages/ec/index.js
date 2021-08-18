@@ -9,7 +9,6 @@ function EC({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data EC :', data)
 
     return (
         <Layout alertTitle='EURO 2020'>
@@ -25,7 +24,14 @@ function EC({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard 
+                                        id={post.id} 
+                                        League={'ec'} 
+                                        Hteam={Hteam} 
+                                        Hscore={Hscore} 
+                                        Ateam={Ateam} 
+                                        Ascore={Ascore} 
+                                    />
                                 </div>
                             )
                         })

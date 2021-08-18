@@ -9,7 +9,6 @@ function Laliga({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data Laliga :', data)
 
     return (
         <Layout alertTitle='Laliga'>
@@ -25,7 +24,14 @@ function Laliga({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard id={post.id} League={'laliga'} Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard 
+                                        id={post.id} 
+                                        League={'laliga'} 
+                                        Hteam={Hteam} 
+                                        Hscore={Hscore} 
+                                        Ateam={Ateam} 
+                                        Ascore={Ascore} 
+                                    />
                                 </div>
                             )
                         })

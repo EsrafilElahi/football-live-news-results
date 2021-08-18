@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import Layout from './../../../components/layout/Layout'
+import { ThemeContext } from './../../../components/context api/ThemeContext'
 
 
 function BundesligaMrGoal({ dataBL1 }) {
 
+    const { darkMode } = useContext(ThemeContext)
     const posts = dataBL1.scorers
-    console.log('data bl1 :', dataBL1)
 
     return (
 
@@ -13,7 +15,7 @@ function BundesligaMrGoal({ dataBL1 }) {
             <div className='row gy-3 content-sec'>
 
                 {posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Scorers 🤔</div> :
-                    <table className="table table-hover table-striped">
+                    <table className={darkMode ? "standing-darki table table-hover" : "standing-lighti table table-hover"}>
                         <thead>
                             <tr>
                                 <th scope="col">position</th>

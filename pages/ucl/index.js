@@ -9,7 +9,6 @@ function UCL({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data UCL :', data)
 
     return (
         <Layout alertTitle='UEFA Champions League'>
@@ -25,7 +24,14 @@ function UCL({ data }) {
 
                             return (
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
-                                    <MatchCard id={post.id} League={`ucl`} Hteam={Hteam} Hscore={Hscore} Ateam={Ateam} Ascore={Ascore} />
+                                    <MatchCard 
+                                        id={post.id} 
+                                        League={`ucl`} 
+                                        Hteam={Hteam} 
+                                        Hscore={Hscore} 
+                                        Ateam={Ateam} 
+                                        Ascore={Ascore} 
+                                    />
                                 </div>
                             )
                         })

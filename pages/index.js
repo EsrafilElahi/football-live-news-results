@@ -10,7 +10,6 @@ export default function Main({ data }) {
 
   const posts = data.articles
   const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-  console.log('data news :', posts)
 
 
   return (

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ReactTooltip from 'react-tooltip'
 import Link from 'next/link'
+import { ThemeContext } from './../context api/ThemeContext';
 
 
 export function MatchCard({ id, League, LeagueName, Hteam, Hscore, Ateam, Ascore }) {
+
+    const { darkMode } = useContext(ThemeContext)
 
     // this is for tooltip --> in nextjs tooltip get feedback in server so then show prop error
     // for solve this problem we should render tooltip after mounting
@@ -26,11 +29,11 @@ export function MatchCard({ id, League, LeagueName, Hteam, Hscore, Ateam, Ascore
 
     return (
         <Link href={`/${League}/${id}`} >
-            <div data-tip={LeagueName} data-for='league' className='link-detail match-card mx-auto position-relative'>
+            <div data-tip={LeagueName} data-for='league' className={darkMode ? 'bg-darki color-lighti link-detail match-card mx-auto position-relative' : 'link-detail match-card mx-auto position-relative'}>
                 {tooltipVisible ? <ReactTooltip id='league' type='warning' effect='solid' /> : null}
                 <p className='mx-2'>{filteredHTeam}</p>
                 <p className='text-success font-weight-bold'>{Hscore}</p>
-                <p className='mx-1 text-danger'>:</p>
+                <p className='mx-1 text-gray'>:</p>
                 <p className='text-success font-weight-bold'>{Ascore}</p>
                 <p className='mx-2'>{filteredATeam}</p>
             </div>
@@ -39,6 +42,8 @@ export function MatchCard({ id, League, LeagueName, Hteam, Hscore, Ateam, Ascore
 }
 
 export function TodayMatchCard({ LeagueName, Hteam, Ateam }) {
+
+    const { darkMode } = useContext(ThemeContext)
 
     // this is for tooltip --> in nextjs tooltip get feedback in server so then show prop error
     // for solve this problem we should render tooltip after mounting
@@ -60,10 +65,10 @@ export function TodayMatchCard({ LeagueName, Hteam, Ateam }) {
     }, [])
 
     return (
-        <div data-tip={LeagueName} data-for='league' className='match-card mx-auto position-relative'>
+        <div data-tip={LeagueName} data-for='league' className={darkMode ? 'bg-darki color-lighti match-card mx-auto position-relative' : 'match-card mx-auto position-relative'}>
             {tooltipVisible ? <ReactTooltip id='league' type='warning' effect='solid' /> : null}
             <p className='mx-2 mx-auto'>{filteredHTeam}</p>
-            <p className='mx-1 mx-auto text-danger'>-</p>
+            <p className='mx-1 mx-auto text-gray'>-</p>
             <p className='mx-2 mx-auto'>{filteredATeam}</p>
         </div>
     )

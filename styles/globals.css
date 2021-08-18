@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
-/* font-family: 'Baloo Tammudu 2', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Arsenal&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
   line-height: 2;
-  font-family: "Baloo Tammudu 2", cursive;
+  font-family: "Arsenal", sans-serif;
   background-color: rgb(255, 255, 200);
 }
 
@@ -48,7 +47,7 @@ a {
 .switch-dark-mode {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
 }
 
 .header-sec {
@@ -67,11 +66,15 @@ a {
 }
 
 .footer-p {
-  padding-top: 14px;
+  padding-top: 8px;
 }
 
 table {
   width: 99%;
+}
+
+.card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .card-body {
@@ -83,7 +86,7 @@ table {
 
 .match-card {
   width: 330px;
-  padding: 10px;
+  padding: 16px;
   display: flex;
   background: rgba(125, 238, 255, 0.507);
   border: 1px solid rgba(85, 121, 194, 0.658);
@@ -93,12 +96,11 @@ table {
 
 .match-card p {
   margin: 0 auto;
-  padding-top: 10px;
 }
 
 .link-detail {
   cursor: pointer;
-  transition: box-shadow .5s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 .link-detail:hover {
@@ -115,7 +117,7 @@ table {
 }
 
 .react-toggle--checked .react-toggle-track {
-  background-color: #d4d4d4 !important;
+  background-color: #4c4f4e !important;
 }
 
 .react-toggle--checked .react-toggle-thumb {
@@ -138,10 +140,69 @@ table {
 *::-webkit-scrollbar-track {
   background: rgba(49, 47, 43, 0.288);
   border-radius: 5px;
+  margin-top: 13px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgba(87, 195, 238, 0.863);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+}
+
+/* light mode */
+.bg-lighti {
+  background: #94d4b7;
+}
+
+.color-darki {
+  color: #003638;
+}
+
+/* dark mode */
+.bg-darki {
+  background: #003638;
+}
+
+.color-lighti {
+  color: #53b8bb;
+}
+
+.color-dark {
+  color: black;
+}
+
+.bg-yellow {
+  background: #ffffc8;
+}
+
+.btn-darki {
+  background: #5777a72b;
+  border-color: #6f97d27a;
+  color: #53b8bb;
+  transition: color border-color 1s ease-out;
+}
+
+.btn-darki:hover {
+  color: #06e1e9;
+  border-color: #06e1e9;
+}
+
+.btn-lighti {
+  background: #2f987061;
+  border-color: #32383759;
+  transition: background 0.5s ease-out;
+}
+
+.btn-lighti:hover {
+  background: #2f9870b7;
+}
+
+.standing-darki tbody tr:nth-child(odd) {
+  background: #003638;
+  color: #53b8bb;
+}
+
+.standing-lighti tbody tr:nth-child(odd) {
+  background: #94d4b7;
+  color: #003638;
 }

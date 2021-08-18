@@ -1,8 +1,9 @@
 import '../public/css/bootstrap.min.css'
 import '../styles/globals.css'
-import "nprogress/nprogress.css";
+import "nprogress/nprogress.css"
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import ThemeProvider from '../components/context api/ThemeProvider'
 
 
 // loading progress
@@ -14,9 +15,9 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <ThemeProvider>
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   )
 }
 

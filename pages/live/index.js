@@ -9,14 +9,13 @@ function Live({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data Live :', data)
 
     return (
         <Layout alertTitle='Live'>
             <div className={paginatedPosts.length > 12 ? 'row gy-3 content-sec' : 'row gy-3'}>
 
                 {
-                    posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Match 🤔</div> :
+                    posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Live Match 🤔</div> :
                         paginatedPosts.map((post) => {
                             const Hteam = post.homeTeam.name
                             const Ateam = post.awayTeam.name

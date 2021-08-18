@@ -1,13 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import Layout from './../../components/layout/Layout';
-import MatchDetailCard from './../../components/other/MatchDetail';
+import Layout from './../../components/layout/Layout'
+import MatchDetailCard from './../../components/other/MatchDetail'
 
 
 function MatchDetail({ data }) {
 
-    console.log("id data :", data)
     const posts = data.matches
     const router = useRouter()
     const { id } = router.query
@@ -19,7 +18,16 @@ function MatchDetail({ data }) {
                     return (
                         <div key={post.id}>
                             <div>{post.id == id ? (
-                                <MatchDetailCard Status={post.status} Winner={post.score.winner} MatchDay={post.matchday} Country='Spain' Hteam={post.awayTeam.name} Hscore={post.score.fullTime.homeTeam} Ateam={post.homeTeam.name} Ascore={post.score.fullTime.awayTeam} />
+                                <MatchDetailCard 
+                                    Status={post.status} 
+                                    Winner={post.score.winner}
+                                    MatchDay={post.matchday} 
+                                    Country='Spain' 
+                                    Hteam={post.homeTeam.name} 
+                                    Hscore={post.score.fullTime.homeTeam} 
+                                    Ateam={post.awayTeam.name} 
+                                    Ascore={post.score.fullTime.awayTeam} 
+                                />
                             ) : null}</div>
                         </div>
                     )

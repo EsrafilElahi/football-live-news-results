@@ -1,9 +1,14 @@
+import { useContext } from 'react'
+import { ThemeContext } from './../context api/ThemeContext';
+
 
 function Title({ title }) {
 
+    const { darkMode } = useContext(ThemeContext)
+
     return (
         <div>
-            <div className="alert alert-primary" role="alert">
+            <div className={darkMode ? 'bg-darki color-lighti alert' : 'bg-lighti color-darki alert'} role="alert">
                 <span>{title}</span>
             </div>
         </div>
@@ -11,3 +16,5 @@ function Title({ title }) {
 }
 
 export default Title
+
+

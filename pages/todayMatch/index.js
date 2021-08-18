@@ -10,7 +10,6 @@ function TodayMatch({ data }) {
 
     const posts = data.matches
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data TodayMatch :', data)
 
     return (
         <Layout alertTitle='Today Matches'>

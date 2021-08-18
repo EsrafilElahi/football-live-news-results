@@ -1,14 +1,16 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import Layout from './../../../components/layout/Layout'
-import Pagination from './../../../components/other/Pagination';
-import usePaginationTools from './../../../components/pagination tools/usePaginationTools';
+import Pagination from './../../../components/other/Pagination'
+import usePaginationTools from './../../../components/pagination tools/usePaginationTools'
+import { ThemeContext } from './../../../components/context api/ThemeContext'
 
 
 function PremierLeague({ dataPL }) {
 
+    const { darkMode } = useContext(ThemeContext)
     const posts = dataPL.standings[0].table
     const { paginatedPosts, paginate, postsPerPage } = usePaginationTools(posts)
-    console.log('data pl :', posts)
 
     return (
 
@@ -16,7 +18,7 @@ function PremierLeague({ dataPL }) {
             <div className='row gy-3 content-sec'>
 
                 {posts.length === 0 ? <div className='mt-4 text-danger'>There Is No Standing 🤔</div> :
-                    <table className="table table-hover table-striped">
+                    <table className={darkMode ? "standing-darki table table-hover" : "standing-lighti table table-hover"}>
                         <thead>
                             <tr>
                                 <th scope="col">position</th>
