@@ -28,7 +28,7 @@ export function MatchCard({ id, League, LeagueName, Hteam, Hscore, Ateam, Ascore
     }, [])
 
     return (
-        <Link href={`/${League}/${id}`} >
+        <Link href={`/${League}/${id}`} passHref>
             <div data-tip={LeagueName} data-for='league' className={darkMode ? 'bg-darki color-lighti link-detail match-card mx-auto position-relative' : 'link-detail match-card mx-auto position-relative'}>
                 {tooltipVisible ? <ReactTooltip id='league' type='warning' effect='solid' /> : null}
                 <p className='mx-2'>{filteredHTeam}</p>
