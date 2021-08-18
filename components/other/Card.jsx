@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useContext } from 'react'
 import { ThemeContext } from './../context api/ThemeContext';
 
