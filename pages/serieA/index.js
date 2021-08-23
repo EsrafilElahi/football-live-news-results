@@ -26,7 +26,7 @@ function SerieA({ data }) {
                                 <div key={post.id} className='col-xs-12 col-lg-6'>
                                     <MatchCard 
                                         id={post.id} 
-                                        League={'serie A'} 
+                                        League={'serieA'} 
                                         Hteam={Hteam} 
                                         Hscore={Hscore} 
                                         Ateam={Ateam} 

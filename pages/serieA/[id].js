@@ -18,15 +18,15 @@ function MatchDetail({ data }) {
                     return (
                         <div key={post.id}>
                             <div>{post.id == id ? (
-                                <MatchDetailCard 
-                                    Status={post.status} 
-                                    Winner={post.score.winner} 
-                                    MatchDay={post.matchday} 
-                                    Country='Italy' 
-                                    Hteam={post.homeTeam.name} 
-                                    Hscore={post.score.fullTime.homeTeam} 
-                                    Ateam={post.awayTeam.name} 
-                                    Ascore={post.score.fullTime.awayTeam} 
+                                <MatchDetailCard
+                                    Status={post.status}
+                                    Winner={post.score.winner}
+                                    MatchDay={post.matchday}
+                                    Country='Italy'
+                                    Hteam={post.homeTeam.name}
+                                    Hscore={post.score.fullTime.homeTeam}
+                                    Ateam={post.awayTeam.name}
+                                    Ascore={post.score.fullTime.awayTeam}
                                 />
                             ) : null}</div>
                         </div>
